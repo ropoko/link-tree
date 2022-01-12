@@ -2,6 +2,12 @@
 
 Script that iterate over the links found in each page, recursively finding more and more links, and at the end print in format of a tree.
 
+## usage
+
+```bash 
+$ python main.py <url> 
+```
+
 ##  example: 
 
 ```text
