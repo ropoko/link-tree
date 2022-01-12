@@ -43,7 +43,15 @@ def get_link(url: str) -> [str]:
     soup = BeautifulSoup(page.content, 'html.parser')
     results = soup.find_all('a')
 
-    links = [result['href'] for result in results]
+    links = [str]
+
+    for result in results:
+        try:
+            links.append(result['href'])
+        except KeyError:
+            pass
+
+    # links = [result['href'] for result in results]
 
     return links
 
@@ -57,11 +65,12 @@ def show(tree: Tree):
         print(f'{levels} {link.data}')
 
 if __name__ == '__main__':
-    if re.search('https?:\/\/(www\.)?([a-zA-Z0-9]*)\.([a-zA-Z]{2,3}(\.[a-zA-Z]{2,3})?)\/?', sys.argv[1]) == None:
-       print('Insert a valid URL.')
-       exit(1)
+    #if re.search('https?:\/\/(www\.)?([a-zA-Z0-9]*)\.([a-zA-Z]{2,3}(\.[a-zA-Z]{2,3})?)\/?', sys.argv[1]) == None:
+    #   print('Insert a valid URL.')
+    #   exit(1)
     
-    main(sys.argv[1])
+    # main(sys.argv[1])
+    main('https://pt.wikipedia.org/')
 
 # https://ropoko.net/
 # |
@@ -69,7 +78,3 @@ if __name__ == '__main__':
 # | -- https://ropoko.net/about
 # | -- https://ropoko.net/tags
 # | -- https://ropoko.net/posts/firstPost
-# | -- | -- https://ropoko.net/posts/firstPost
-# | -- | -- https://ropoko.net/posts/firstPost
-# | -- | -- https://ropoko.net/posts/firstPost
-# | -- | -- | -- https://ropoko.net/posts/firstPost
