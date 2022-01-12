@@ -51,8 +51,6 @@ def get_link(url: str) -> [str]:
         except KeyError:
             pass
 
-    # links = [result['href'] for result in results]
-
     return links
 
 
@@ -65,15 +63,13 @@ def show(tree: Tree):
         print(f'{levels} {link.data}')
 
 if __name__ == '__main__':
-    #if re.search('https?:\/\/(www\.)?([a-zA-Z0-9]*)\.([a-zA-Z]{2,3}(\.[a-zA-Z]{2,3})?)\/?', sys.argv[1]) == None:
-    #   print('Insert a valid URL.')
-    #   exit(1)
+    if re.search('https?:\/\/(www\.)?([a-zA-Z0-9]*)\.([a-zA-Z]{2,3}(\.[a-zA-Z]{2,3})?)\/?', sys.argv[1]) == None:
+       print('Insert a valid URL.')
+       exit(1)
     
-    # main(sys.argv[1])
-    main('https://pt.wikipedia.org/')
+    main(sys.argv[1])
 
 # https://ropoko.net/
-# |
 # | -- https://ropoko.net/projects
 # | -- https://ropoko.net/about
 # | -- https://ropoko.net/tags
